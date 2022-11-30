@@ -10,15 +10,13 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    username: {
-        type: String,
-        required: true
-    }
+ 
 }, {timestamps: true})
 
+//executes before user object is saved
 userSchema.pre('save', async function encryptPassword(next){
     const user = this
-    const hash = await bcrypt.hash(this.password, 10)
+    const hash = await bcrypt.hash(this.password, 10)//10 is no of rounds to be hashed
     this.password = hash
     next()
 })
