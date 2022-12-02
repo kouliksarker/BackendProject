@@ -6,7 +6,7 @@ const airLineSchema = new mongoose.Schema({
         required: true
     },
     website: {
-        type: string
+        type: String
     }
 }, {timestamps: true}) 
 
