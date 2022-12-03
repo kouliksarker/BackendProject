@@ -1,13 +1,13 @@
-const FlightService = require('../service/flightService')
+const ReviewService = require('../service/reviewService')
 
-const createFlight = async (req, res) => {
+const createReview = async (req, res) => {
     
     try {
-        const Flight = await FlightService.createflight(req.body)
+        const review = await ReviewService.createReview(req.body)
         res.status(200).json({
             success: true,
-            message: 'Successfully created Flight',
-            data: Flight
+            message: 'Successfully created Review',
+            data: review
         })
         
     } catch (err) {
@@ -19,13 +19,13 @@ const createFlight = async (req, res) => {
     }
 }
 
-const getFlight = async (req, res) => {
+const getReview = async (req, res) => {
     try {
-        const Flight = await FlightService.getFlight(req.params.flightNumber)
+        const Review = await ReviewService.getReview(req.params.userId, req.params.flightId )
         res.status(200).json({
             success: true,
-            message: 'Successfully fetched Flight',
-            data: Flight
+            message: 'Successfully fetched Review',
+            data: Review
         })
         
     } catch (err) {
@@ -37,13 +37,13 @@ const getFlight = async (req, res) => {
     }
 }
 
-const getAllFlights = async (req, res) => {
+const getAllReviews = async (req, res) => {
     try {
-        const Flight = await FlightService.getAllFlights(req.query)
+        const Review = await ReviewService.getAllReviews(req.params.flight)
         res.status(200).json({
             success: true,
-            message: 'Successfully fetched all Flights',
-            data: Flight
+            message: 'Successfully fetched all Reviews',
+            data: Review
         })
         
     } catch (err) {
@@ -55,13 +55,13 @@ const getAllFlights = async (req, res) => {
     }
 }
 
-const destroyFlight = async (req, res) => {
+const destroyReview = async (req, res) => {
     try {
-        const Flight = await FlightService.destroyFlight(req.query.flightNumber)
+        const Review = await ReviewService.destroyReview(req.params.id)
         res.status(200).json({
             success: true,
-            message: 'Successfully deleted Flight',
-            data: Flight
+            message: 'Successfully deleted Review',
+            data: Review
         })
         
     } catch (err) {
@@ -74,8 +74,8 @@ const destroyFlight = async (req, res) => {
 }
 
 module.exports = {
-    createFlight,
-    getFlight,
-    getAllFlights,
-    destroyFlight
+    createReview,
+    getReview,
+    getAllReviews,
+    destroyReview
 }
