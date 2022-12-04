@@ -39,11 +39,11 @@ const getReview = async (req, res) => {
 
 const getAllReviews = async (req, res) => {
     try {
-        const Review = await ReviewService.getAllReviews(req.params.flight)
+        const review = await ReviewService.getAllReviews(req.params.flightId)
         res.status(200).json({
             success: true,
             message: 'Successfully fetched all Reviews',
-            data: Review
+            data: review
         })
         
     } catch (err) {

@@ -36,7 +36,7 @@ const getReview = async (user, flight) => {
 
 const getAllReviews = async(flight) => {
     try{
-        const response = await Review.find({flight: flight})
+        const response = await Review.find({flightId: flight})
         return response
     } catch (err){
         console.log("err:", err)
